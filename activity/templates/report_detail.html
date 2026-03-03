@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Detail</title>
+</head>
+<body>
+
+<h2>Report Details</h2>
+
+<p><b>Date:</b> {{ report.date }}</p>
+<p><b>Current Week Activity:</b> {{ report.current_week_activity }}</p>
+<p><b>Next Week Activity:</b> {{ report.next_week_activity }}</p>
+<p><b>Leave Taken:</b> {{ report.leave_taken }}</p>
+<p><b>Remarks:</b> {{ report.remarks }}</p>
+
+<hr>
+
+<p><b>HR Status:</b> {{ report.hr_status }}</p>
+<p><b>Group Head Status:</b> {{ report.gh_status }}</p>
+<p><b>Submitted On:</b> {{ report.created_at }}</p>
+
+<br>
+<a href="{% url 'employee_dashboard' %}">Back to Dashboard</a>
+
+</body>
+</html>

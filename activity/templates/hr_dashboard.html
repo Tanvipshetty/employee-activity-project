@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HR Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .approve {
+            background-color: blue;
+            color: white;
+        }
+
+        .reject {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>HR Dashboard</h2>
+
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>Date</th>
+        <th>Current Activity</th>
+<th>Next Week Activity</th>
+        <th>Leave Taken</th>
+        <th>Remarks</th>
+
+        <th>GH Status</th>
+        <th>HR Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for r in reports %}
+    <tr>
+        <td>{{ r.employee.name }}</td>
+        <td>{{ r.date }}</td>
+        <td>{{ r.current_week_activity }}</td>
+         <td>{{ r.next_week_activity }}</td>
+        <td>{{ r.leave_taken }}</td>
+        <td>{{ r.remarks }}</td>
+
+        <td>{{ r.gh_status }}</td>
+        <td>{{ r.hr_status }}</td>
+        <td>
+            <a href="{% url 'hr_approve' r.id %}">
+                <button class="approve">Approve</button>
+            </a>
+            <a href="{% url 'hr_reject' r.id %}">
+                <button class="reject">Reject</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

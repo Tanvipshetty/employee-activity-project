@@ -1,0 +1,45 @@
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Date</th>
+        <th>Current Week Activity</th>
+        <th>Next Week Activity</th>
+        <th>Leave Taken</th>
+        <th>Remarks</th>
+        <th>GH Status</th>
+        <th>HR Status</th>
+    </tr>
+
+    {% for report in reports %}
+    <tr>
+        <td>{{ report.date }}</td>
+        <td>{{ report.current_week_activity }}</td>
+        <td>{{ report.next_week_activity }}</td>
+        <td>{{ report.leave_taken }}</td>
+        <td>{{ report.remarks }}</td>
+
+        <td>
+            {% if report.gh_status == "Approved" %}
+                <span style="color:green; font-weight:bold;">Approved</span>
+            {% elif report.gh_status == "Rejected" %}
+                <span style="color:red; font-weight:bold;">Rejected</span>
+            {% else %}
+                <span style="color:orange; font-weight:bold;">Pending</span>
+            {% endif %}
+        </td>
+
+        <td>
+            {% if report.hr_status == "Approved" %}
+                <span style="color:green; font-weight:bold;">Approved</span>
+            {% elif report.hr_status == "Rejected" %}
+                <span style="color:red; font-weight:bold;">Rejected</span>
+            {% else %}
+                <span style="color:orange; font-weight:bold;">Pending</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7">No reports submitted yet.</td>
+    </tr>
+    {% endfor %}
+</table>
