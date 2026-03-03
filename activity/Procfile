@@ -1,0 +1,1 @@
+web: gunicorn employee_activity_project.wsgi
